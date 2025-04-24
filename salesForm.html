@@ -21,7 +21,7 @@
               <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5">
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">New Sale Form</h3>
-                  <form name="salesForm" id="salesForm">
+                  <form name="salesForm" id="salesForm" action="form_done.php" method="post" >
       
                     <div class="row">
                       <div class="col-md-6 mb-4">
@@ -64,7 +64,7 @@
                         <div data-mdb-input-init class="form-outline">
                           <input type="text" id="email" name="email" class="form-control form-control-lg" required />
                           <label class="form-label" for="emailAddress">Email</label>
-                          <p style="color: red;" id="emsgmail"> </p>
+                          <!-- <p style="color: red;" id="emsgmail"> </p> -->
                         </div>
       
                       </div>
@@ -73,7 +73,7 @@
                         <div data-mdb-input-init class="form-outline">
                           <input type="text" id="phoneNumber" name="telNo" class="form-control form-control-lg" />
                           <label class="form-label" for="phoneNumber">Phone Number</label>
-                          <p style="color: red;" id="emsg"> </p>
+                          <!-- <p style="color: red;" id="emsg"> </p> -->
                         </div>
       
                       </div>
@@ -114,10 +114,10 @@
                     <div class="row">
                       <div class="col-12">
       
-                        <select class="select form-control-lg">
+                        <select class="select form-control-lg" id="Status" name="Status">
                           <option value="1" disabled>Status</option>
-                          <option value="2">Arranged Meeting</option>
-                          <option value="3">OPtion 2 </option>
+                          <option value="Arranged Meeting">Arranged Meeting</option>
+                          <option value="OPtion 2">OPtion 2 </option>
                           <option value="4">Subject 3</option>
                           <option value="5" >Subject 3</option>
                         </select>
