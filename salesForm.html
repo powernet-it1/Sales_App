@@ -21,7 +21,7 @@
               <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                 <div class="card-body p-4 p-md-5">
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">New Sale Form</h3>
-                  <form>
+                  <form name="salesForm" id="salesForm">
       
                     <div class="row">
                       <div class="col-md-6 mb-4">
@@ -117,9 +117,9 @@
                         <select class="select form-control-lg">
                           <option value="1" disabled>Status</option>
                           <option value="2">Arranged Meeting</option>
-                          <option value="3">OPtion 2</option>
+                          <option value="3">OPtion 2 </option>
                           <option value="4">Subject 3</option>
-                          <option value="5">Subject 3</option>
+                          <option value="5" >Subject 3</option>
                         </select>
                         <label class="form-label select-label">Status</label>
       
@@ -139,31 +139,23 @@
         </div>
       </section>
       <script>
-            document.getElementById("sub").addEventListener("click",form_validation)
-            function form_validation(){
-              var telephone=document.getElementById("phoneNumber").value;
-                if(telephone==""){
-                  document.getElementById("emsg").innerHTML="please fill";
-                }
-                else{
-                  document.getElementById("emsg").innerHTML="";
-                }
-                
-                const email = document.getElementById("email").value;
-                const error = document.getElementById("error");
-
-              // Basic email regex pattern
-                const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-              if (pattern.test(email)) {
-                  error.textContent = "";
-                     return true;
-              } else {
-                  error.textContent = "Invalid email format.";
-                      return false;
-              }
-              }    
-            
+        function checkEmail() {
+          const email = document.getElementById("email").value;
+          const emailError = document.getElementById("emailError");
+      
+          // Simple email pattern check
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+          if (!email) {
+            emailError.textContent = "Email is required.";
+          } else if (!emailPattern.test(email)) {
+            emailError.textContent = "Invalid email format. Must contain '@' and a domain.";
+          } else {
+            emailError.textContent = "";
+            alert("Email format is valid!");
+          }
+        }
       </script>
+      
 </body>
 </html>
