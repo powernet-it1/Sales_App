@@ -22,37 +22,79 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-              <form>
+              <form id="registerForm" method="POST" action="registerDone.php">
 
                 <div data-mdb-input-init class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" name="uname" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example1cg">Username</label>
+                  <input 
+                    type="text" 
+                    id="uname" 
+                    name="uname" 
+                    class="form-control form-control-lg" 
+                    placeholder="Enter a username" 
+                    required
+                  />
+                  <label class="form-label" for="uname">Username</label>
                 </div>
 
                 <div data-mdb-input-init class="form-outline mb-4">
-                  <input type="email" id="form3Example3cg" name="email" class="form-control form-control-lg" />
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="form-control form-control-lg" 
+                    placeholder="Enter a email" 
+                    required
+                  />
                   <label class="form-label" for="form3Example3cg">Email</label>
                 </div>
 
                 <div data-mdb-input-init class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" name="pword" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cg">Password</label>
+                  <input 
+                    type="password" 
+                    id="pword" 
+                    name="pword" 
+                    class="form-control form-control-lg"
+                    placeholder="Enter a password" 
+                    required
+                  />
+                  <label class="form-label" for="pword">Password</label>
                 </div>
 
                 <div data-mdb-input-init class="form-outline mb-4">
-                  <input type="password" id="form3Example4cdg" name="repword" class="form-control form-control-lg" />
+                  <input 
+                    type="password" 
+                    id="rePword" 
+                    name="repword" 
+                    class="form-control form-control-lg"
+                    placeholder="Re-Enter the password" 
+                    required
+                  />
                   <label class="form-label" for="form3Example4cdg">Confirm your password</label>
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <button  type="button" id="btn-reg" data-mdb-button-init
-                    data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                  <button  
+                    type="submit" 
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                  >
                 </div>
 
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
                     class="fw-bold text-body"><u>Login here</u></a></p>
 
               </form>
+
+              <script>
+                document.getElementById('registerForm').addEventListener('submit', function(e) {
+                  const password = document.getElementById('pword').value;
+                  const confirmPassword = document.getElementById('rePword').value;
+
+                  if (password !== confirmPassword) {
+                    alert("Passwords do not match!");
+                    e.preventDefault(); 
+                  }
+                });
+              </script>
 
             </div>
           </div>
