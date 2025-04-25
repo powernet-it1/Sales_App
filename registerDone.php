@@ -2,12 +2,30 @@
 
 $username = $_POST['uname'];
 $email = $_POST['email'];
-$password = $_POST['pword'];
-$conPassword = $_POST['rePword'];
+$pword = $_POST['pword'];
+$conPword = $_POST['rePword'];
 
-echo $username;
+$servername = "localhost";
+    $userName = "root";
+    $password = "";
+    $dbname = "sales_app";
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+$conn = new mysqli($servername, $userName, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "INSERT INTO users (username,email,pword)
+VALUES ('$username', '$email', '$pword')";
+
+if ($conn->query($sql) === TRUE) {
+    header("Location:table.html");
+//   echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 
 ?>
