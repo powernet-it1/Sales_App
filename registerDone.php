@@ -20,7 +20,7 @@ $sql = "INSERT INTO users (username,email,pword)
 VALUES ('$username', '$email', '$pword')";
 
 if ($conn->query($sql) === TRUE) {
-    header("Location:table.html");
+    header("Location:index.html");
 //   echo "New record created successfully";
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
