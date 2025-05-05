@@ -21,8 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT * FROM users WHERE username = '$uname' AND pword = '$pword'";
     $result = $conn->query($sql);
 
+
+
     if ($result->num_rows > 0) {
-        $_SESSION['username'] = $uname; 
+
+        $row = $result->fetch_assoc();
+
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['userid'] = $row['id'];
+
         header("Location: table.html");  
         exit();
     } else {
@@ -36,3 +43,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
+

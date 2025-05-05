@@ -9,7 +9,7 @@
     $profit=$_POST['profit'];
     $date=$_POST['estimatedFinishDate'];
     $Status = isset($_POST['status']) ? $_POST['status'] : '';
-    $lastUpdatedBy="Chinthaka";
+    $salesPerson="Chinthaka";
     $lastUpdatedDate=date('Y-m-d');
 
     $formattedDate = !empty($date) ? date('Y-m-d', strtotime($date)) : null;
@@ -27,10 +27,10 @@ if ($conn->connect_error) {
 }
 
 $sql = "INSERT INTO sales (cusname,location,description,contactPerson,contactPersonTel,contactPersonEmail,expectedCost
-,profit,estimatedFinishDate,sts,lastUpdatedBy,lastUpdatedDate)
+,profit,estimatedFinishDate,sts,salesPerson,lastUpdatedDate)
 VALUES ('$cusname', '$location', '$description', '$contactPerson','$phoneNumber','$email','$expectedCost','$profit',
 " . 
-  ($formattedDate ? "'$formattedDate'" : "NULL") . ",'$Status','$lastUpdatedBy','$lastUpdatedDate')";
+  ($formattedDate ? "'$formattedDate'" : "NULL") . ",'$Status','$salesPerson','$lastUpdatedDate')";
 
 if ($conn->query($sql) === TRUE) {
     header("Location:table.html");

@@ -14,12 +14,12 @@ die("Connection failed: " . $conn->connect_error);
 $id = $_POST['id'];
 $description = $_POST['description'];
 $status = $_POST['sts'];
-$lastUpdatedBy = "Malaka";
+$salesPerson = "Malaka";
 $lastUpdatedDate = date('Y-m-d');
 
-$sql = "UPDATE sales SET description = ?, sts = ?, lastUpdatedBy = ?, lastUpdatedDate = ?  WHERE id = ?";
+$sql = "UPDATE sales SET description = ?, sts = ?, salesPerson = ?, lastUpdatedDate = ?  WHERE id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssssi", $description, $status, $lastUpdatedBy, $lastUpdatedDate, $id);
+$stmt->bind_param("ssssi", $description, $status, $salesPerson, $lastUpdatedDate, $id);
 
 if ($stmt->execute()) {
     echo "<script>alert('Record updated successfully'); window.location.href='table.html';</script>";

@@ -32,23 +32,29 @@
     <table class="table table-bordered">
             <thead>
               <tr style="text-align: center;">
-                
                 <th scope="col">Customer</th>
                 <th scope="col">Location</th>
-                <th scope="col">Description</th>
+                <!-- <th scope="col">Description</th> -->
                 <th scope="col">Contact Person</th>
-                <th scope="col">Contact Person TeleNo</th>
+                <!-- <th scope="col">Contact Person TeleNo</th>
                 <th scope="col">Contact Person Email</th>
                 <th scope="col">Expected Cost</th>
                 <th scope="col">Profit</th>
-                <th scope="col">Estimated Finish Date</th>
+                <th scope="col">Estimated Finish Date</th> -->
                 <th scope="col">Status</th>
-                <th scope="col">Last Updated By</th>
+                <th scope="col">Sales Person</th>
                 <th scope="col">Last Updated Date</th>
           
               </tr>
             </thead>
             <tbody id="sales-data">
+              <style>
+                #sales-data tr:hover {
+                  background-color: #f1f1f1;
+                  cursor: pointer;
+                }
+              </style>
+              
             <script>
               window.onload = function () {
                   fetch('table.php')
@@ -61,18 +67,21 @@
                               tr.innerHTML = `
                                   <td class="customer-name">${row.cusname}</td>
                                   <td>${row.location}</td>
-                                  <td>${row.description}</td>
+                                  
                                   <td>${row.contactPerson}</td>
-                                  <td>${row.contactPersonTel}</td>
-                                  <td>${row.contactPersonEmail}</td>
-                                  <td>${row.expectedCost}</td>
-                                  <td>${row.profit}</td>
-                                  <td>${row.estimatedFinishDate}</td>
+                                  
                                   <td>${row.sts}</td>
-                                  <td class="last-updated-by">${row.lastUpdatedBy}</td>
+                                  <td class="last-updated-by">${row.salesPerson}</td>
                                   <td>${row.lastUpdatedDate}</td>
                               `;
+
+                              tr.style.cursor = "pointer";
+                              tr.addEventListener('click', () => {
+                                  window.location.href = `salesFormUpdate.php?id=${row.id}`;
+                              });
+
                               tbody.appendChild(tr);
+                              
                           });
                       })
                       .catch(error => {
