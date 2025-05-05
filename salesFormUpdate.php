@@ -1,5 +1,28 @@
 <?php
 
+session_start();
+
+$timeout_duration = 600;
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+if (!isset($_SESSION['username'])) {
+    header("Location: table1.php");
+    exit();
+}
+
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
+    session_unset();     
+    session_destroy();   
+    header("Location: index.php?expired=true");
+    exit();
+}
+
+$_SESSION['LAST_ACTIVITY'] = time(); 
+
+
 $servername = "localhost";
 $userName = "root";
 $password = "";

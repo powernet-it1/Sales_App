@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $servername = "localhost";
@@ -8,7 +7,6 @@ $password = "";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -18,29 +16,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $uname = $_POST['uname'];
     $pword = $_POST['pword'];
 
-    $sql = "SELECT * FROM users WHERE username = '$uname' AND pword = '$pword'";
-    $result = $conn->query($sql);
-
-
+    $stmt = $conn->prepare("SELECT id, username FROM users WHERE username = ? AND pword = ?");
+    $stmt->bind_param("ss", $uname, $pword);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-
         $row = $result->fetch_assoc();
 
         $_SESSION['username'] = $row['username'];
         $_SESSION['userid'] = $row['id'];
 
-        header("Location: table.html");  
+        $_SESSION['LAST_ACTIVITY'] = time();
+
+
+        header("Location: table1.php");  
         exit();
     } else {
         echo "<script>
                 alert('Invalid Username or Password!');
-                window.location.href='index.html';
-             </script>"; 
-        
+                window.location.href='index.php';
+              </script>";
     }
+
+    $stmt->close();
 }
 
 $conn->close();
 ?>
-

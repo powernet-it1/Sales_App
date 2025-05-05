@@ -1,3 +1,28 @@
+<?php
+session_start();
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+$timeout_duration = 600;
+
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit();
+}
+
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
+    session_unset();     
+    session_destroy();   
+    header("Location: index.php?expired=true");
+    exit();
+}
+
+$_SESSION['LAST_ACTIVITY'] = time(); 
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>

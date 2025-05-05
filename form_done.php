@@ -1,4 +1,15 @@
 <?php 
+
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    http_response_code(401); 
+    echo json_encode(['error' => 'Unauthorized access']);
+    exit();
+}
+
+$loggedInUsername = $_SESSION['username'];
+
     $cusname =$_POST['cusname'];
     $location=$_POST['location'];
     $description=$_POST['description'];
@@ -9,7 +20,7 @@
     $profit=$_POST['profit'];
     $date=$_POST['estimatedFinishDate'];
     $Status = isset($_POST['status']) ? $_POST['status'] : '';
-    $salesPerson="Chinthaka";
+    // $salesPerson="Chinthaka";
     $lastUpdatedDate=date('Y-m-d');
 
     $formattedDate = !empty($date) ? date('Y-m-d', strtotime($date)) : null;
@@ -30,10 +41,10 @@ $sql = "INSERT INTO sales (cusname,location,description,contactPerson,contactPer
 ,profit,estimatedFinishDate,sts,salesPerson,lastUpdatedDate)
 VALUES ('$cusname', '$location', '$description', '$contactPerson','$phoneNumber','$email','$expectedCost','$profit',
 " . 
-  ($formattedDate ? "'$formattedDate'" : "NULL") . ",'$Status','$salesPerson','$lastUpdatedDate')";
+  ($formattedDate ? "'$formattedDate'" : "NULL") . ",'$Status','$loggedInUsername','$lastUpdatedDate')";
 
 if ($conn->query($sql) === TRUE) {
-    header("Location:table.html");
+    header("Location:table1.php");
 //   echo "New record created successfully";
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;

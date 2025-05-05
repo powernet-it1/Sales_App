@@ -1,3 +1,21 @@
+<?php
+
+session_start();
+session_unset();
+session_destroy();
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+if (isset($_GET['expired']) && $_GET['expired'] == 'true') {
+    echo "<script>alert('Session expired. Please log in again.');</script>";
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,7 +77,7 @@
                   </div>  
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <a href="register.html" class="text-body">Create an Account</a>
+                    <a href="register.php" class="text-body">Create an Account</a>
                   </div>
                 
       
@@ -73,16 +91,61 @@
             </div>
           </div>
         </div>
-        <div
-          class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-          <!-- Copyright -->
-          <div class="text-white mb-3 mb-md-0">
-            Copyright © 2025. All rights reserved.
-          </div>
-          <!-- Copyright -->
-      
-        </div>
+        <footer class="mt-auto d-flex flex-column flex-md-row text-center text-md-start justify-content-between align-items-center py-4 px-4 px-xl-5 bg-primary">
+  <div class="text-white mb-3 mb-md-0">
+    Copyright © 2025. All rights reserved.
+  </div>
+  <div class="text-white text-end" id="footer-datetime"></div>
+</footer>
+
+<script>
+  function getFormattedDate() {
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+
+    // Get day suffix (st, nd, rd, th)
+    const suffix = (d) => {
+      if (d > 3 && d < 21) return 'th';
+      switch (d % 10) {
+        case 1: return 'st';
+        case 2: return 'nd';
+        case 3: return 'rd';
+        default: return 'th';
+      }
+    };
+
+    return `${day}${suffix(day)} of ${month} ${year}`;
+  }
+
+  function getFormattedTime() {
+    const date = new Date();
+    return date.toLocaleTimeString(); // Customize if needed
+  }
+
+  function updateFooterDateTime() {
+    document.getElementById('footer-datetime').innerHTML =
+      `${getFormattedDate()}<br>${getFormattedTime()}`;
+  }
+
+  updateFooterDateTime();
+  setInterval(updateFooterDateTime, 1000);
+</script>
+
       </section>
     
 </body>
+
+<script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+
+    window.addEventListener('pageshow', function (event) {
+        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+            window.location.reload();
+        }
+    });
+</script>
 </html>

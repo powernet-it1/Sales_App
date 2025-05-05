@@ -22,7 +22,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssssi", $description, $status, $salesPerson, $lastUpdatedDate, $id);
 
 if ($stmt->execute()) {
-    echo "<script>alert('Record updated successfully'); window.location.href='table.html';</script>";
+    echo "<script>alert('Record updated successfully'); window.location.href='table1.php';</script>";
 } else {
     echo "Error updating record: " . $conn->error;
 }
