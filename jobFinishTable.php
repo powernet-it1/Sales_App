@@ -35,7 +35,6 @@ $_SESSION['LAST_ACTIVITY'] = time();
 <body class="d-flex flex-column min-vh-100">
   <!-- navbar section  -->
 <?php
-session_start();
 $username = $_SESSION['username'] ?? 'Guest';
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -64,7 +63,7 @@ $username = $_SESSION['username'] ?? 'Guest';
 </nav>
 
   <div class="container my-3">
-  <h1 style="margin-left:-10%; margin-top:3%; margin-bottom:3%;">Ongoing Sales</h1>
+  <h1 style="margin-left:-10%; margin-top:3%; margin-bottom:3%;">Finished Sales</h1>
     <div class="row">
       <div class="col-md-6">
         <label for="filterByUser" class="form-label">Filter by Last Updated By:</label>
@@ -110,7 +109,7 @@ $username = $_SESSION['username'] ?? 'Guest';
               
             <script>
               window.onload = function () {
-                  fetch('table.php')
+                  fetch('jobFinishTable_done.php')
                       .then(response => response.json())
                       .then(data => {
                           const tbody = document.getElementById('sales-data');
@@ -130,7 +129,7 @@ $username = $_SESSION['username'] ?? 'Guest';
 
                               tr.style.cursor = "pointer";
                               tr.addEventListener('click', () => {
-                                  window.location.href = `salesFormUpdate.php?id=${row.id}`;
+                                  window.location.href = `jobFinishData.php?id=${row.id}`;
                               });
 
                               tbody.appendChild(tr);

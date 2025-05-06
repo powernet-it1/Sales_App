@@ -114,11 +114,14 @@ if ($result->num_rows > 0) {
                                 </div>
                             </div>
 
-                            <div class="mt-4 pt-2">
-                                <button class="btn btn-success" type="submit" name="submit">Update</button>
-                                <input class="btn btn-outline-danger" type="reset" value="Clear">
+                            <div class="mt-4 pt-2 d-flex" style="gap: 10px; width: fit-content;">
+                                <button class="btn btn-success" style="width: 120px;" type="submit" name="submit">Update</button>
                             </div>
 
+                        </form>
+                        <form action="jobFinish_done.php" method="post" style="display: inline;">
+                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                            <button class="btn btn-secondary" style="width: 120px;" type="submit">Job Finish</button>
                         </form>
                     </div>
                 </div>

@@ -116,7 +116,7 @@ if (isset($_GET['expired']) && $_GET['expired'] == 'true') {
       }
     };
 
-    return `${day}${suffix(day)} of ${month} ${year}`;
+    return `${day}${suffix(day)}§ ${month} ${year}`;
   }
 
   function getFormattedTime() {

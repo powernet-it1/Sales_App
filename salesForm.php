@@ -152,9 +152,9 @@ $_SESSION['LAST_ACTIVITY'] = time();
                       </div>
                     </div>
       
-                    <div class="mt-4 pt-2">
-                      <button data-mdb-ripple-init class="btn btn-success" id="sub" name="sub">Submit</button>
-                      <input class="btn btn-outline-danger" type="reset" value="Clear">
+                    <div class="mt-4 pt-2 d-flex" style="gap: 10px; width: fit-content;">
+                      <button data-mdb-ripple-init class="btn btn-success" id="sub" name="sub" style="width: 120px;">Submit</button>
+                      <input class="btn btn-outline-danger" type="reset" value="Clear" style="width: 120px;">
                     </div>
       
                   </form>
