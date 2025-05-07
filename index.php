@@ -69,16 +69,16 @@ if (isset($_GET['expired']) && $_GET['expired'] == 'true') {
                 </div>
       
                 <div class="d-flex justify-content-between align-items-center">
-                  <a href="#!" class="text-body">Forgot password?</a>
+                  <a href="forgotPassword/forgotPassword.php" class="text-body">Forgot password?</a>
                 </div>
 
-                <div class="divider d-flex align-items-center my-4">
+                <!-- <div class="divider d-flex align-items-center my-4">
                     <p class="text-center fw-bold mx-3 mb-0">Don't have an Account</p>
                   </div>  
 
                 <div class="d-flex justify-content-between align-items-center">
                     <a href="register.php" class="text-body">Create an Account</a>
-                  </div>
+                  </div> -->
                 
       
                 <div class="text-center text-lg-start mt-4 pt-2">
