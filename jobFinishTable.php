@@ -63,7 +63,7 @@ $username = $_SESSION['username'] ?? 'Guest';
 </nav>
 
   <div class="container my-3">
-  <h1 style="margin-left:-10%; margin-top:3%; margin-bottom:3%;">Finished Sales</h1>
+  <h1 class="ps-3 pt-3" style="margin-left:-5%; margin-top:3%; margin-bottom:3%;">Finished Sales</h1>
     <div class="row">
       <div class="col-md-6">
         <label for="filterByUser" class="form-label">Filter by Last Updated By:</label>
@@ -81,6 +81,7 @@ $username = $_SESSION['username'] ?? 'Guest';
     </div>
   </div>
   <div class="px-5">
+    <div class="table-responsive">
     <table class="table table-bordered">
             <thead>
               <tr style="text-align: center;">
@@ -129,7 +130,7 @@ $username = $_SESSION['username'] ?? 'Guest';
 
                               tr.style.cursor = "pointer";
                               tr.addEventListener('click', () => {
-                                  window.location.href = `jobFinishData.php?id=${row.id}`;
+                                  window.location.href = `finishedSale.php?id=${row.id}`;
                               });
 
                               tbody.appendChild(tr);
@@ -165,6 +166,7 @@ $username = $_SESSION['username'] ?? 'Guest';
           </tbody>
          
     </table>
+    </div>
     </div>
     <div class="container my-3 text-end">
       <a href="salesForm.php" class="btn btn-primary">Add New Sale</a>

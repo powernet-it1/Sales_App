@@ -37,7 +37,7 @@ die("Connection failed: " . $conn->connect_error);
 
 $id = $_GET['id'];  
 
-$sql = "SELECT * FROM sales WHERE id = $id"; 
+$sql = "SELECT * FROM finish_sales WHERE id = $id"; 
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -63,7 +63,7 @@ if ($result->num_rows > 0) {
             <div class="col-12 col-lg-10 col-xl-10">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
-                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Update Sale</h3>
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Fiished Sale</h3>
                         
                         <form name="salesForm" id="salesForm" action="salesUpdate_done.php" method="post">
                             <!-- Hidden ID field -->
@@ -82,7 +82,7 @@ if ($result->num_rows > 0) {
 
                             <div class="row">
                                 <div class="col-md-12 mb-4 pb-2">
-                                    <textarea class="form-control form-control-lg" name="description" rows="3" required><?php echo $row['description']; ?></textarea>
+                                    <textarea class="form-control form-control-lg" name="description" rows="3" disabled><?php echo $row['description']; ?></textarea>
                                     <label class="form-label">Description</label>
                                 </div>
                             </div>
@@ -100,31 +100,28 @@ if ($result->num_rows > 0) {
                                     <input type="text" class="form-control form-control-lg" value="<?php echo $row['contactPersonTel']; ?>" disabled />
                                     <label class="form-label">Phone Number</label>
                                 </div>
+                                <div class="col-md-6 mb-4">
+                                    <input type="text" class="form-control form-control-lg" value="<?php echo $row['expectedCost']; ?>" disabled />
+                                    <label class="form-label">Expected Cost</label>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <input type="text" class="form-control form-control-lg" value="<?php echo $row['profit']; ?>" disabled />
+                                    <label class="form-label">Profit</label>
+                                </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-12 mb-4">
-                                    <select class="form-select form-control-lg" name="sts" required>
+                                    <select class="form-select form-control-lg" name="sts" disabled>
                                         <option value="">Select the Status</option>
                                         <option value="Arranged Meeting" <?php if($row['sts'] == 'Arranged Meeting') echo 'selected'; ?>>Arranged Meeting</option>
-                                        <option value="Waiting For PO" <?php if($row['sts'] == 'Waiting For PO') echo 'selected'; ?>>Waiting For PO</option>
-                                        <option value="Cancled" <?php if($row['sts'] == 'Cancled') echo 'selected'; ?>>Cancled</option>
+                                        <option value="Finished" <?php if($row['sts'] == 'Finished') echo 'selected'; ?>>Finished</option>
+                                        <option value="Cancled" <?php if($row['sts'] == 'cancled') echo 'selected'; ?>>Cancled</option>
                                     </select>
                                     <label class="form-label">Status</label>
                                 </div>
                             </div>
-
-                            <div class="mt-4 pt-2 d-flex" style="gap: 10px; width: fit-content;">
-                                <button class="btn btn-success" style="width: 120px;" type="submit" name="submit">Update</button>
-                            </div>
-
                         </form>
-                        <div style="margin-top:2%;">
-                        <form action="jobFinish_done.php" method="post" style="display: inline;">
-                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                            <button class="btn btn-secondary" style="width: 120px;" type="submit">Job Finish</button>
-                        </form>
-                        </div>
                     </div>
                 </div>
             </div>

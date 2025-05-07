@@ -143,9 +143,8 @@ $_SESSION['LAST_ACTIVITY'] = time();
                         <select class="select form-control-lg" id="Status" name="status">
                           <option value="1" disabled selected>Select the Status</option>
                           <option value="Arranged Meeting">Arranged Meeting</option>
-                          <option value="OPtion 2">OPtion 2 </option>
-                          <option value="4">Subject 3</option>
-                          <option value="5" >Subject 3</option>
+                          <option value="Waiting For PO">Waiting For PO </option>
+                          <option value="cancled">Cancled</option>
                         </select>
                         <label class="form-label select-label">Status</label>
       
