@@ -25,7 +25,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
 $servername = "localhost";
 $userName = "root";
-$password = "";
+$password = "1234";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);
@@ -108,6 +108,8 @@ if ($result->num_rows > 0) {
                                         <option value="">Select the Status</option>
                                         <option value="Arranged Meeting" <?php if($row['sts'] == 'Arranged Meeting') echo 'selected'; ?>>Arranged Meeting</option>
                                         <option value="Waiting For PO" <?php if($row['sts'] == 'Waiting For PO') echo 'selected'; ?>>Waiting For PO</option>
+                                        <option value="Ongoing" <?php if($row['sts'] == 'Ongoing') echo 'selected'; ?>>Ongoing</option>
+                                        <option value="Postponed" <?php if($row['sts'] == 'Postponed') echo 'selected'; ?>>Postponed</option>
                                         <option value="Cancled" <?php if($row['sts'] == 'Cancled') echo 'selected'; ?>>Cancled</option>
                                     </select>
                                     <label class="form-label">Status</label>

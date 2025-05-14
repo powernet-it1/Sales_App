@@ -12,7 +12,7 @@ $loggedInUsername = $_SESSION['username'];
 
 $servername = "localhost";
 $userName = "root";
-$password = "";
+$password = "1234";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);

@@ -1,8 +1,18 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    http_response_code(401); 
+    echo json_encode(['error' => 'Unauthorized access']);
+    exit();
+}
+
+$loggedInUsername = $_SESSION['username'];
+
 $servername = "localhost";
 $userName = "root";
-$password = "";
+$password = "1234";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);
@@ -14,12 +24,12 @@ die("Connection failed: " . $conn->connect_error);
 $id = $_POST['id'];
 $description = $_POST['description'];
 $status = $_POST['sts'];
-$salesPerson = "Malaka";
+// $salesPerson = "Malaka";
 $lastUpdatedDate = date('Y-m-d');
 
 $sql = "UPDATE sales SET description = ?, sts = ?, salesPerson = ?, lastUpdatedDate = ?  WHERE id = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssssi", $description, $status, $salesPerson, $lastUpdatedDate, $id);
+$stmt->bind_param("ssssi", $description, $status, $loggedInUsername, $lastUpdatedDate, $id);
 
 if ($stmt->execute()) {
     echo "<script>alert('Record updated successfully'); window.location.href='table1.php';</script>";

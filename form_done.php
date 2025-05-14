@@ -27,7 +27,7 @@ $loggedInUsername = $_SESSION['username'];
 
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "1234";
     $dbname = "sales_app";
 
 // Create connection

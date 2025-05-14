@@ -144,6 +144,8 @@ $_SESSION['LAST_ACTIVITY'] = time();
                           <option value="1" disabled selected>Select the Status</option>
                           <option value="Arranged Meeting">Arranged Meeting</option>
                           <option value="Waiting For PO">Waiting For PO </option>
+                          <option value="Ongoing">Ongoing</option>
+                          <option value="Postponed">Postponed</option>
                           <option value="cancled">Cancled</option>
                         </select>
                         <label class="form-label select-label">Status</label>

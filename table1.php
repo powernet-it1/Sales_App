@@ -35,7 +35,6 @@ $_SESSION['LAST_ACTIVITY'] = time();
 <body class="d-flex flex-column min-vh-100">
   <!-- navbar section  -->
 <?php
-session_start();
 $username = $_SESSION['username'] ?? 'Guest';
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">

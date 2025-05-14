@@ -7,7 +7,7 @@ $conPword = $_POST['rePword'];
 
     $servername = "localhost";
     $userName = "root";
-    $password = "";
+    $password = "1234";
     $dbname = "sales_app";
 
     $hashedPassword = password_hash($pword, PASSWORD_DEFAULT);
