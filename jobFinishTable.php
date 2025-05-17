@@ -53,6 +53,9 @@ $username = $_SESSION['username'] ?? 'Guest';
         <li class="nav-item">
           <a class="nav-link active" href="jobFinishTable.php">Finished Sales</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="supplierTable.php">Suppliers</a>
+        </li>
       </ul>
       <span class="navbar-text text-white me-3">
         Logged in as: <?php echo htmlspecialchars($username); ?>
