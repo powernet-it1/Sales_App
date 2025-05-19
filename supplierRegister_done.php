@@ -22,7 +22,7 @@ if (!isset($_SESSION['username'])) {
 
     $servername = "localhost";
     $username = "root";
-    $password = "1234";
+    $password = "";
     $dbname = "sales_app";
 
     

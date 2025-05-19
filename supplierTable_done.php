@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 
 $servername = "localhost";
 $userName = "root";
-$password = "1234";
+$password = "";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);
