@@ -37,7 +37,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
 <?php
 $username = $_SESSION['username'] ?? 'Guest';
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav style="background-color:#320303;" class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"> Powernet</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -53,9 +53,9 @@ $username = $_SESSION['username'] ?? 'Guest';
         <li class="nav-item">
           <a class="nav-link active" href="jobFinishTable.php">Finished Sales</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link active" href="supplierTable.php">Suppliers</a>
-        </li>
+        </li> -->
       </ul>
       <span class="navbar-text text-white me-3">
         Logged in as: <?php echo htmlspecialchars($username); ?>
@@ -174,7 +174,7 @@ $username = $_SESSION['username'] ?? 'Guest';
     <div class="container my-3 text-end">
       <a href="salesForm.php" class="btn btn-primary">Add New Sale</a>
     </div>
-<footer class="mt-auto d-flex flex-column flex-md-row text-center text-md-start justify-content-between align-items-center py-4 px-4 px-xl-5 bg-primary">
+<footer class="mt-auto d-flex flex-column flex-md-row text-center text-md-start justify-content-between align-items-center py-4 px-4 px-xl-5" style="background-color:#320303;">
   <div class="text-white mb-3 mb-md-0">
     Copyright © 2025. All rights reserved.
   </div>
