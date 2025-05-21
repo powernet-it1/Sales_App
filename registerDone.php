@@ -6,8 +6,8 @@ $pword = $_POST['pword'];
 $conPword = $_POST['rePword'];
 
     $servername = "localhost";
-    $userName = "root";
-    $password = "";
+    $userName = "powernet";
+    $password = "Power@#2587";
     $dbname = "sales_app";
 
     $hashedPassword = password_hash($pword, PASSWORD_DEFAULT);

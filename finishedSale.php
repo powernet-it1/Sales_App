@@ -24,8 +24,8 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
 
 $servername = "localhost";
-$userName = "root";
-$password = "";
+$userName = "powernet";
+$password = "Power@#2587";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);

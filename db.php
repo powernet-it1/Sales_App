@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "powernet";
+$password = "Power@#2587";
 $dbname = "sales_app";
 
 // Create connection

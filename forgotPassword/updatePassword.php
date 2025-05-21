@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = new mysqli("localhost", "root", "", "sales_app");
+$conn = new mysqli("localhost", "powernet", "Power@#2587", "sales_app");
 if ($conn->connect_error) {
     die("DB Connection failed: " . $conn->connect_error);
 }

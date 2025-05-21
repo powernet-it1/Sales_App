@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['otp'] = $otp;
     $_SESSION['uname'] = $uname;
 
-    $conn = new mysqli("localhost", "root", "", "sales_app");
+    $conn = new mysqli("localhost", "powernet", "Power@#2587", "sales_app");
     if ($conn->connect_error) {
         die("DB Connection failed: " . $conn->connect_error);
     }
