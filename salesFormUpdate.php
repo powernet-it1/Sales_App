@@ -24,8 +24,8 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
 
 $servername = "localhost";
-$userName = "powernet";
-$password = "Power@#2587";
+$userName = "root";
+$password = "1234";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);
@@ -89,6 +89,10 @@ if ($result->num_rows > 0) {
 
                             <div class="row">
                                 <div class="col-md-6 mb-4">
+                                    <input type="text" class="form-control form-control-lg" value="<?php echo $row['cusType']; ?>" disabled />
+                                    <label class="form-label">Customer Type</label>
+                                </div>
+                                <div class="col-md-6 mb-4">
                                     <input type="text" class="form-control form-control-lg" value="<?php echo $row['contactPerson']; ?>" disabled />
                                     <label class="form-label">Contact Person</label>
                                 </div>
@@ -101,6 +105,34 @@ if ($result->num_rows > 0) {
                                     <label class="form-label">Phone Number</label>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+        
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="text" id="expectedCost" name="expectedCost" value="<?php echo $row['expectedCost']; ?>" class="form-control form-control-lg" />
+                                        <label class="form-label" for="expectedCost">Expected Cost</label>
+                                    </div>
+        
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="text" id="profit" name="profit" value="<?php echo $row['profit']; ?>" class="form-control form-control-lg" />
+                                        <label class="form-label" for="profit">Profit</label>
+                                    </div>
+        
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="date" id="date" name="estimatedFinishDate" class="form-control form-control-lg" value="<?php echo $row['estimatedFinishDate']?>"/>
+                                        <label class="form-label" for="date">Estimated Job Done Date</label>
+                                    </div>
+                                </div>
+                            </div>
+
 
                             <div class="row">
                                 <div class="col-12 mb-4">

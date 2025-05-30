@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -11,55 +10,79 @@ if (!isset($_SESSION['username'])) {
 $loggedInUsername = $_SESSION['username'];
 
 $servername = "localhost";
-$userName = "powernet";
-$password = "Power@#2587";
+$userName = "root";
+$password = "1234";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);
-
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
-if($loggedInUsername == "Wimal"){
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+$perPage = isset($_GET['perPage']) ? (int) $_GET['perPage'] : 5;
+$offset = ($page - 1) * $perPage;
 
-    $sql = "SELECT * FROM sales";
-    $result = $conn->query($sql);
+$searchCustomer = $_GET['customer'] ?? '';
+$filterUser = $_GET['user'] ?? '';
 
-    $data = [];
+$searchCustomer = "%" . $conn->real_escape_string($searchCustomer) . "%";
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
+if ($loggedInUsername === "Wimal") {
+    $sql = "SELECT * FROM sales WHERE cusname LIKE ? ";
+    if (!empty($filterUser)) {
+        $sql .= "AND salesPerson = ? ";
     }
+    $sql .= "ORDER BY lastUpdatedDate DESC LIMIT ?, ?";
+    $stmt = $conn->prepare($sql);
+    
+    if (!empty($filterUser)) {
+        $stmt->bind_param("ssii", $searchCustomer, $filterUser, $offset, $perPage);
+    } else {
+        $stmt->bind_param("sii", $searchCustomer, $offset, $perPage);
+    }
+} else {
+    $sql = "SELECT * FROM sales WHERE salesPerson = ? AND cusname LIKE ? ORDER BY lastUpdatedDate DESC LIMIT ?, ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssii", $loggedInUsername, $searchCustomer, $offset, $perPage);
 }
 
-$conn->close();
-
-}else{
-$sql = "SELECT * FROM sales WHERE salesPerson = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $loggedInUsername);
 $stmt->execute();
-
 $result = $stmt->get_result();
-
 $data = [];
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
-    }
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row;
 }
+
+// Total count for pagination
+$totalQuery = "SELECT COUNT(*) as total FROM sales WHERE cusname LIKE ?";
+if ($loggedInUsername === "Wimal" && !empty($filterUser)) {
+    $totalQuery .= " AND salesPerson = ?";
+    $countStmt = $conn->prepare($totalQuery);
+    $countStmt->bind_param("ss", $searchCustomer, $filterUser);
+} else if ($loggedInUsername === "Wimal") {
+    $countStmt = $conn->prepare($totalQuery);
+    $countStmt->bind_param("s", $searchCustomer);
+} else {
+    $totalQuery .= " AND salesPerson = ?";
+    $countStmt = $conn->prepare($totalQuery);
+    $countStmt->bind_param("ss", $searchCustomer, $loggedInUsername);
+}
+
+$countStmt->execute();
+$countResult = $countStmt->get_result();
+$totalRow = $countResult->fetch_assoc();
+$total = $totalRow['total'];
 
 $stmt->close();
 $conn->close();
 
-}
-
-// Return JSON
 header('Content-Type: application/json');
-echo json_encode($data);
-
+echo json_encode([
+    'data' => $data,
+    'total' => $total,
+    'page' => $page,
+    'perPage' => $perPage
+]);
 ?>
-

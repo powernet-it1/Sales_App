@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$userName = "powernet";
-$password = "Power@#2587";
+$userName = "root";
+$password = "1234";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);
@@ -28,12 +28,13 @@ $row = $result->fetch_assoc();
 $sts = 'Finished';
 $formattedDate = date('Y-m-d');
 
-$insert = $conn->prepare("INSERT INTO finish_sales (cusname, location, description, contactPerson, contactPersonEmail, contactPersonTel, expectedCost, profit, estimatedFinishDate, sts, salesPerson, lastUpdatedDate)
-                          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$insert->bind_param("ssssssssssss", 
+$insert = $conn->prepare("INSERT INTO finish_sales (cusname, location, description, cusType, contactPerson, contactPersonEmail, contactPersonTel, expectedCost, profit, estimatedFinishDate, sts, salesPerson, lastUpdatedDate)
+                          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$insert->bind_param("sssssssssssss", 
     $row['cusname'], 
     $row['location'], 
-    $row['description'], 
+    $row['description'],
+    $row['cusType'], 
     $row['contactPerson'], 
     $row['contactPersonEmail'], 
     $row['contactPersonTel'],

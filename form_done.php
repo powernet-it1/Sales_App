@@ -13,6 +13,7 @@ $loggedInUsername = $_SESSION['username'];
     $cusname =$_POST['cusname'];
     $location=$_POST['location'];
     $description=$_POST['description'];
+    $cusType=$_POST['cusType'];
     $contactPerson=$_POST['contactPerson'];
     $email=$_POST['contactPersonEmail'];
     $phoneNumber=$_POST['contactPersonTel'];
@@ -26,8 +27,8 @@ $loggedInUsername = $_SESSION['username'];
     $formattedDate = !empty($date) ? date('Y-m-d', strtotime($date)) : null;
 
     $servername = "localhost";
-    $username = "powernet";
-    $password = "Power@#2587";
+    $username = "root";
+    $password = "1234";
     $dbname = "sales_app";
 
 // Create connection
@@ -37,9 +38,9 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO sales (cusname,location,description,contactPerson,contactPersonTel,contactPersonEmail,expectedCost
+$sql = "INSERT INTO sales (cusname,location,description,cusType,contactPerson,contactPersonTel,contactPersonEmail,expectedCost
 ,profit,estimatedFinishDate,sts,salesPerson,lastUpdatedDate)
-VALUES ('$cusname', '$location', '$description', '$contactPerson','$phoneNumber','$email','$expectedCost','$profit',
+VALUES ('$cusname', '$location', '$description','$cusType', '$contactPerson','$phoneNumber','$email','$expectedCost','$profit',
 " . 
   ($formattedDate ? "'$formattedDate'" : "NULL") . ",'$Status','$loggedInUsername','$lastUpdatedDate')";
 

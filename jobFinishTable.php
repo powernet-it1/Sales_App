@@ -68,15 +68,18 @@ $username = $_SESSION['username'] ?? 'Guest';
   <div class="container my-3">
   <h1 class="ps-3 pt-3" style="margin-left:-5%; margin-top:3%; margin-bottom:3%;">Finished Sales</h1>
     <div class="row">
-      <div class="col-md-6">
-        <label for="filterByUser" class="form-label">Filter by Last Updated By:</label>
-        <select id="filterByUser" class="form-select" onchange="filterTable()">
+      <?php if ($_SESSION['username'] === 'Wimal') : ?>
+        <div class="col-md-6">
+          <label for="filterByUser" class="form-label">Filter by Last Updated By:</label>
+          <select id="filterByUser" class="form-select" onchange="filterTable()">
             <option value="">All</option>
             <option value="Malaka">Malaka</option>
             <option value="sanjana">Sanjana</option>
-            <option value="OtherUser">OtherUser</option>
-        </select>
-      </div>
+            <option value="Chinthaka">Chinthaka</option>
+            <option value="Lakmal">Lakmal</option>
+          </select>
+        </div>
+      <?php endif; ?>
       <div class="col-md-6">
         <label for="searchCustomer" class="form-label">Search by Customer Name:</label>
         <input type="text" id="searchCustomer" class="form-control" onkeyup="filterTable()" placeholder="Enter customer name...">

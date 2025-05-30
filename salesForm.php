@@ -76,21 +76,33 @@ $_SESSION['LAST_ACTIVITY'] = time();
                     </div>
       
                     <div class="row">
-                      <div class="col-md-6 mb-4 d-flex align-items-center">
-      
-                        <div data-mdb-input-init class="form-outline datepicker w-100">
+
+                      <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
+                          <select class="select form-control-lg" id="cusType" name="cusType" required>
+                            <option value="" disabled selected>Select Customer Type</option>
+                            <option value="New Customer">New Customer</option>
+                            <option value="Existing Customer">Existing Customer</option>
+                            <option value="Tender">Tender</option>
+                          </select>
+                          <label class="form-label" for="cusType">Customer Type</label>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                        <div data-mdb-input-init class="form-outline">
                           <input type="text" class="form-control form-control-lg" name="contactPerson" id="contactPerson" required />
                           <label for="contactPerson" class="form-label">Contact Person</label>
                         </div>
-      
+                      </div>
                     </div>
+
                     <div class="row">
                       <div class="col-md-6 mb-4 pb-2">
       
                         <div data-mdb-input-init class="form-outline">
                           <input type="text" id="email" name="contactPersonEmail" class="form-control form-control-lg" required />
                           <label class="form-label" for="emailAddress">Email</label>
-                          <!-- <p style="color: red;" id="emsgmail"> </p> -->
                         </div>
       
                       </div>
@@ -99,7 +111,6 @@ $_SESSION['LAST_ACTIVITY'] = time();
                         <div data-mdb-input-init class="form-outline">
                           <input type="text" id="phoneNumber" name="contactPersonTel" class="form-control form-control-lg" />
                           <label class="form-label" for="phoneNumber">Phone Number</label>
-                          <!-- <p style="color: red;" id="emsg"> </p> -->
                         </div>
       
                       </div>
