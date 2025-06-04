@@ -10,7 +10,8 @@ if (!isset($_SESSION['username'])) {
 $loggedInUsername = $_SESSION['username'];
 
 $servername = "localhost";
-
+$username = "powernet";
+$password = "Power@#2587";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);
