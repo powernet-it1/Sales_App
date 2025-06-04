@@ -46,7 +46,7 @@ $username = $_SESSION['username'] ?? 'Guest';
 ?>
 <nav style="background-color:#320303;" class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"> Powernet</a>
+    <h1 class="navbar-brand"> Powernet</h1>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -55,10 +55,10 @@ $username = $_SESSION['username'] ?? 'Guest';
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="table1.php">Ongoing Sales</a>
+          <a class="nav-link active" href="table1.php" style="color:green; font-weight:bold;">Ongoing Sales</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="jobFinishTable.php">Finished Sales</a>
+          <a class="nav-link active" href="jobFinishTable.php" style="color:red; font-weight:bold;">Finished Sales</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link active" href="supplierTable.php">Suppliers</a>
@@ -77,12 +77,12 @@ $username = $_SESSION['username'] ?? 'Guest';
     <div class="row">
   <!-- Left side: Filter and Search -->
   <div class="col-md-4">
-      <?php if ($_SESSION['username'] === 'Wimal') : ?>
+      <?php if ($_SESSION['username'] === 'Wimal' || $_SESSION['username'] === 'Admin') : ?>
         <label for="filterByUser" class="form-label">Filter by Last Updated By:</label>
         <select id="filterByUser" class="form-select" onchange="filterTable()">
             <option value="">All</option>
-            <option value="Malaka">Malaka</option>
-            <option value="sanjana">Sanjana</option>
+            <!-- <option value="Malaka">Malaka</option> -->
+            <!-- <option value="sanjana">Sanjana</option> -->
             <option value="Chinthaka">Chinthaka</option>
             <option value="Lakmal">Lakmal</option>
         </select>
@@ -97,7 +97,7 @@ $username = $_SESSION['username'] ?? 'Guest';
   <!-- Right side: Chart -->
   <div class="col-md-4">
     <h6 class="text-center">My Sales Status Summary</h6>
-    <canvas id="statusChart" height="150"></canvas>
+    <canvas id="statusChart" height="300"></canvas>
   </div>
 </div>
 
@@ -109,7 +109,8 @@ $username = $_SESSION['username'] ?? 'Guest';
                 <th scope="col">Customer</th>
                 <th scope="col">Location</th>
                 <!-- <th scope="col">Description</th> -->
-                <th scope="col">Contact Person</th>
+                <!-- <th scope="col">Contact Person</th> -->
+                <th scope="col">Customer Type</th>
                 <!-- <th scope="col">Contact Person TeleNo</th>
                 <th scope="col">Contact Person Email</th>
                 <th scope="col">Expected Cost</th>
@@ -145,7 +146,8 @@ function loadSalesData() {
         tr.innerHTML = `
           <td class="customer-name">${row.cusname}</td>
           <td>${row.location}</td>
-          <td>${row.contactPerson}</td>
+          
+          <td>${row.cusType}</td>
           <td>${row.sts}</td>
           <td class="last-updated-by">${row.salesPerson}</td>
           <td>${row.lastUpdatedDate}</td>

@@ -11,8 +11,8 @@ if (!isset($_SESSION['username'])) {
 $loggedInUsername = $_SESSION['username'];
 
 $servername = "localhost";
-$userName = "root";
-$password = "1234";
+$username = "powernet";
+$password = "Power@#2587";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);
@@ -21,9 +21,9 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-if($loggedInUsername == "Wimal"){
+if($loggedInUsername == "Wimal" || $loggedInUsername == "Admin"){
 
-    $sql = "SELECT * FROM finish_sales WHERE sts = 'finished'";
+    $sql = "SELECT * FROM finish_sales WHERE sts = 'finished' ORDER BY lastUpdatedDate DESC";
     $result = $conn->query($sql);
 
     $data = [];

@@ -10,8 +10,7 @@ if (!isset($_SESSION['username'])) {
 $loggedInUsername = $_SESSION['username'];
 
 $servername = "localhost";
-$userName = "root";
-$password = "1234";
+
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);
@@ -28,7 +27,7 @@ $filterUser = $_GET['user'] ?? '';
 
 $searchCustomer = "%" . $conn->real_escape_string($searchCustomer) . "%";
 
-if ($loggedInUsername === "Wimal") {
+if ($loggedInUsername === "Wimal" || $loggedInUsername === "Admin") {
     $sql = "SELECT * FROM sales WHERE cusname LIKE ? ";
     if (!empty($filterUser)) {
         $sql .= "AND salesPerson = ? ";
@@ -42,7 +41,7 @@ if ($loggedInUsername === "Wimal") {
         $stmt->bind_param("sii", $searchCustomer, $offset, $perPage);
     }
 } else {
-    $sql = "SELECT * FROM sales WHERE salesPerson = ? AND cusname LIKE ? ORDER BY lastUpdatedDate DESC LIMIT ?, ?";
+    $sql = "SELECT * FROM sales WHERE salesPerson = ? AND cusname LIKE ? ORDER BY estimatedFinishDate DESC LIMIT ?, ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssii", $loggedInUsername, $searchCustomer, $offset, $perPage);
 }
@@ -57,11 +56,11 @@ while ($row = $result->fetch_assoc()) {
 
 // Total count for pagination
 $totalQuery = "SELECT COUNT(*) as total FROM sales WHERE cusname LIKE ?";
-if ($loggedInUsername === "Wimal" && !empty($filterUser)) {
+if ($loggedInUsername === "Wimal" || $loggedInUsername === "Admin" && !empty($filterUser)) {
     $totalQuery .= " AND salesPerson = ?";
     $countStmt = $conn->prepare($totalQuery);
     $countStmt->bind_param("ss", $searchCustomer, $filterUser);
-} else if ($loggedInUsername === "Wimal") {
+} else if ($loggedInUsername === "Wimal" || $loggedInUsername === "Admin") {
     $countStmt = $conn->prepare($totalQuery);
     $countStmt->bind_param("s", $searchCustomer);
 } else {

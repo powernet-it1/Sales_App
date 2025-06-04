@@ -1,8 +1,8 @@
 <?php
 session_start();
 $servername = "localhost";
-$username = "root";
-$password = "1234";
+$username = "powernet";
+$password = "Power@#2587";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

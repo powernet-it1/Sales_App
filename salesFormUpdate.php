@@ -24,8 +24,8 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
 
 $servername = "localhost";
-$userName = "root";
-$password = "1234";
+$username = "powernet";
+$password = "Power@#2587";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);
@@ -90,18 +90,19 @@ if ($result->num_rows > 0) {
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <input type="text" class="form-control form-control-lg" value="<?php echo $row['cusType']; ?>" disabled />
+                                    <br>
                                     <label class="form-label">Customer Type</label>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <input type="text" class="form-control form-control-lg" value="<?php echo $row['contactPerson']; ?>" disabled />
+                                    <input type="text" class="form-control form-control-lg" value="<?php echo $row['contactPerson']; ?>" />
                                     <label class="form-label">Contact Person</label>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <input type="text" class="form-control form-control-lg" value="<?php echo $row['contactPersonEmail']; ?>" disabled />
+                                    <input type="text" class="form-control form-control-lg" value="<?php echo $row['contactPersonEmail']; ?>"  />
                                     <label class="form-label">Email</label>
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <input type="text" class="form-control form-control-lg" value="<?php echo $row['contactPersonTel']; ?>" disabled />
+                                    <input type="text" class="form-control form-control-lg" value="<?php echo $row['contactPersonTel']; ?>" />
                                     <label class="form-label">Phone Number</label>
                                 </div>
                             </div>
@@ -139,11 +140,17 @@ if ($result->num_rows > 0) {
                                     <select class="form-select form-control-lg" name="sts" required>
                                         <option value="">Select the Status</option>
                                         <option value="Arranged Meeting" <?php if($row['sts'] == 'Arranged Meeting') echo 'selected'; ?>>Arranged Meeting</option>
+                                        <option value="Site Visited" <?php if($row['sts'] == 'Site Visited') echo 'selected'; ?>>Site Visited</option>
+                                        <option value="Quotation Making" <?php if($row['sts'] == 'Quotation Making') echo 'selected'; ?>>Quotation Making</option>
+                                        <option value="Quotation Sent" <?php if($row['sts'] == 'Quotation Sent') echo 'selected'; ?>>Quotation Sent</option>
                                         <option value="Waiting For PO" <?php if($row['sts'] == 'Waiting For PO') echo 'selected'; ?>>Waiting For PO</option>
+                                        <option value="Job Won" <?php if($row['sts'] == 'Job Won') echo 'selected'; ?>>Job Won</option>
+                                        <option value="Job Lost" <?php if($row['sts'] == 'Job Lost') echo 'selected'; ?>>Job Lost</option>
                                         <option value="Ongoing" <?php if($row['sts'] == 'Ongoing') echo 'selected'; ?>>Ongoing</option>
                                         <option value="Postponed" <?php if($row['sts'] == 'Postponed') echo 'selected'; ?>>Postponed</option>
                                         <option value="Cancled" <?php if($row['sts'] == 'Cancled') echo 'selected'; ?>>Cancled</option>
                                     </select>
+                                    <br>
                                     <label class="form-label">Status</label>
                                 </div>
                             </div>

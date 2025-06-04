@@ -24,7 +24,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
 
 $servername = "localhost";
-$userName = "powernet";
+$username = "powernet";
 $password = "Power@#2587";
 $dbname = "sales_app";
 
@@ -88,6 +88,10 @@ if ($result->num_rows > 0) {
                             </div>
 
                             <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <input type="text" class="form-control form-control-lg" value="<?php echo $row['cusType']; ?>" disabled />
+                                    <label class="form-label">Customer Type</label>
+                                </div>
                                 <div class="col-md-6 mb-4">
                                     <input type="text" class="form-control form-control-lg" value="<?php echo $row['contactPerson']; ?>" disabled />
                                     <label class="form-label">Contact Person</label>

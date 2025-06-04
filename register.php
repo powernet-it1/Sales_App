@@ -61,8 +61,12 @@
                     required
                   />
                   <label class="form-label" for="pword">Password</label>
+                  <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="showPassword">
+                    <label class="form-check-label" for="showPassword">Show Password</label>
+                  </div>
                 </div>
-                <!-- Confirm password filed -->
+
                 <div data-mdb-input-init class="form-outline mb-4">
                   <input 
                     type="password" 
@@ -73,6 +77,10 @@
                     required
                   />
                   <label class="form-label" for="rePword">Confirm your password</label>
+                  <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="showRePassword">
+                    <label class="form-check-label" for="showRePassword">Show Password</label>
+                  </div>
                 </div>
 
                 <div class="d-flex justify-content-center">
@@ -99,6 +107,17 @@
                   }
                 });
               </script>
+              <script>
+                document.getElementById('showPassword').addEventListener('change', function() {
+                  const passwordField = document.getElementById('pword');
+                  passwordField.type = this.checked ? 'text' : 'password';
+                });
+
+                document.getElementById('showRePassword').addEventListener('change', function() {
+                  const confirmPasswordField = document.getElementById('rePword');
+                  confirmPasswordField.type = this.checked ? 'text' : 'password';
+                });
+                </script>
 
             </div>
           </div>
@@ -106,15 +125,15 @@
       </div>
     </div>
   </div>
-  <div
+  <!-- <div
     class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-    <!-- Copyright -->
+    
     <div class="text-white mb-3 mb-md-0">
       Copyright © 2025. All rights reserved.
     </div>
-    <!-- Copyright -->
+   
       
-  </div>
+  </div> -->
 </section>
 </body>
 </html>

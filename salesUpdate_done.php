@@ -11,8 +11,8 @@ if (!isset($_SESSION['username'])) {
 $loggedInUsername = $_SESSION['username'];
 
 $servername = "localhost";
-$userName = "root";
-$password = "1234";
+$username = "powernet";
+$password = "Power@#2587";
 $dbname = "sales_app";
 
 $conn = new mysqli($servername, $userName, $password, $dbname);

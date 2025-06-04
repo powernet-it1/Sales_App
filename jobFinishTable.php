@@ -48,10 +48,10 @@ $username = $_SESSION['username'] ?? 'Guest';
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="table1.php">Ongoing Sales</a>
+          <a class="nav-link active" href="table1.php" style="color:green; font-weight:bold;">Ongoing Sales</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="jobFinishTable.php">Finished Sales</a>
+          <a class="nav-link active" href="jobFinishTable.php" style="color:red; font-weight:bold;">Finished Sales</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link active" href="supplierTable.php">Suppliers</a>
@@ -68,13 +68,13 @@ $username = $_SESSION['username'] ?? 'Guest';
   <div class="container my-3">
   <h1 class="ps-3 pt-3" style="margin-left:-5%; margin-top:3%; margin-bottom:3%;">Finished Sales</h1>
     <div class="row">
-      <?php if ($_SESSION['username'] === 'Wimal') : ?>
+      <?php if ($_SESSION['username'] === 'Wimal' || $_SESSION['username'] === 'Admin') : ?>
         <div class="col-md-6">
           <label for="filterByUser" class="form-label">Filter by Last Updated By:</label>
           <select id="filterByUser" class="form-select" onchange="filterTable()">
             <option value="">All</option>
-            <option value="Malaka">Malaka</option>
-            <option value="sanjana">Sanjana</option>
+            <!-- <option value="Malaka">Malaka</option> -->
+            <!-- <option value="sanjana">Sanjana</option> -->
             <option value="Chinthaka">Chinthaka</option>
             <option value="Lakmal">Lakmal</option>
           </select>
@@ -94,7 +94,8 @@ $username = $_SESSION['username'] ?? 'Guest';
                 <th scope="col">Customer</th>
                 <th scope="col">Location</th>
                 <!-- <th scope="col">Description</th> -->
-                <th scope="col">Contact Person</th>
+                <!-- <th scope="col">Contact Person</th> -->
+                <th scope="col">Customer Type</th>
                 <!-- <th scope="col">Contact Person TeleNo</th>
                 <th scope="col">Contact Person Email</th>
                 <th scope="col">Expected Cost</th>
@@ -127,7 +128,8 @@ $username = $_SESSION['username'] ?? 'Guest';
                                   <td class="customer-name">${row.cusname}</td>
                                   <td>${row.location}</td>
                                   
-                                  <td>${row.contactPerson}</td>
+                                 
+                                  <td>${row.cusType}</td>
                                   
                                   <td>${row.sts}</td>
                                   <td class="last-updated-by">${row.salesPerson}</td>

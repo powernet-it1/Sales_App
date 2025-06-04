@@ -80,18 +80,19 @@ $_SESSION['LAST_ACTIVITY'] = time();
                       <div class="col-md-6 mb-4">
                         <div data-mdb-input-init class="form-outline">
                           <select class="select form-control-lg" id="cusType" name="cusType" required>
-                            <option value="" disabled selected>Select Customer Type</option>
+                            <option value="" disabled selected></option>
                             <option value="New Customer">New Customer</option>
                             <option value="Existing Customer">Existing Customer</option>
                             <option value="Tender">Tender</option>
                           </select>
+                          <br>
                           <label class="form-label" for="cusType">Customer Type</label>
                         </div>
                       </div>
 
                       <div class="col-md-6 mb-4">
                         <div data-mdb-input-init class="form-outline">
-                          <input type="text" class="form-control form-control-lg" name="contactPerson" id="contactPerson" required />
+                          <input type="text" class="form-control form-control-lg" name="contactPerson" id="contactPerson" />
                           <label for="contactPerson" class="form-label">Contact Person</label>
                         </div>
                       </div>
@@ -101,7 +102,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
                       <div class="col-md-6 mb-4 pb-2">
       
                         <div data-mdb-input-init class="form-outline">
-                          <input type="text" id="email" name="contactPersonEmail" class="form-control form-control-lg" required />
+                          <input type="text" id="email" name="contactPersonEmail" class="form-control form-control-lg" />
                           <label class="form-label" for="emailAddress">Email</label>
                         </div>
       
@@ -140,10 +141,10 @@ $_SESSION['LAST_ACTIVITY'] = time();
                                 <input type="date" id="date" name="estimatedFinishDate" class="form-control form-control-lg" />
                                 <label class="form-label" for="date">Estimated Job Done Date</label>
                             </div>
-                            <script>
+                            <!-- <script>
                                 const today = new Date().toISOString().split('T')[0];
                                 document.getElementById('date').setAttribute('min', today);
-                            </script>
+                            </script> -->
         
                         </div>
                       </div>
@@ -152,13 +153,19 @@ $_SESSION['LAST_ACTIVITY'] = time();
                       <div class="col-12">
       
                         <select class="select form-control-lg" id="Status" name="status">
-                          <option value="1" disabled selected>Select the Status</option>
+                          <option value="1" disabled selected></option>
                           <option value="Arranged Meeting">Arranged Meeting</option>
+                          <option value="Site Visited">Site Visited</option>
+                          <option value="Quotation Making">Quotation Making</option>
+                          <option value="Quotation Sent">Quotation Sent</option>
                           <option value="Waiting For PO">Waiting For PO </option>
                           <option value="Ongoing">Ongoing</option>
                           <option value="Postponed">Postponed</option>
+                          <option value="Job Won">Job Won</option>
+                          <option value="Job Lost">Job Lost</option>
                           <option value="cancled">Cancled</option>
                         </select>
+                        <br>
                         <label class="form-label select-label">Status</label>
       
                       </div>
